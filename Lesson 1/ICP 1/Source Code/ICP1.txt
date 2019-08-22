@@ -1,0 +1,93 @@
+[cloudera@quickstart ~]$ su hdfs
+Password:
+su: incorrect password
+[cloudera@quickstart ~]$ pwd
+/home/cloudera
+[cloudera@quickstart ~]$ hdfs dfs -ls
+[cloudera@quickstart ~]$ Hadoop fs –ls
+bash: Hadoop: command not found
+[cloudera@quickstart ~]$ hdfs fs -ls
+Error: Could not find or load main class fs
+[cloudera@quickstart ~]$ hdfs dfs -mkdir /ICP1/
+[cloudera@quickstart ~]$ hdfs dfs -copyFromLocal
+/home/cloudera/Desktop/localfile/shakespeare.txt ICP1/shakespeare.txt
+copyFromLocal: `ICP1/shakespeare.txt': No such file or directory
+[cloudera@quickstart ~]$ hdfs dfs -ls
+[cloudera@quickstart ~]$ hdfs dfs -mkdir /ICP1/
+mkdir: `/ICP1': File exists
+[cloudera@quickstart ~]$ hdfs dfs -copyFromLocal
+/home/cloudera/Desktop/localfile/shakespeare.txt /ICP1/shakespeare.txt
+[cloudera@quickstart ~]$ hdfs dfs -copyFromLocal
+/home/cloudera/Desktop/localfile/word_list.txt /ICP1/word_list.txt
+[cloudera@quickstart ~]$ hdfs dfs -cat /ICP1/shakespeare.txt ^C
+[cloudera@quickstart ~]$ hdfs dfs -cat /ICP1/shakespeare.txt
+/ICP1/word_list.txt | hdfs dfs -put /ICP1/out.txt
+put: `/ICP1/out.txt': No such file or directory
+cat: Unable to write to output stream.
+cat: Unable to write to output stream.
+[cloudera@quickstart ~]$ hdfs dfs -cat /ICP1/shakespeare.txt
+/ICP1/word_list.txt | hdfs dfs -put - /ICP1/out.txt
+[cloudera@quickstart ~]$ hdfs dfs -cat /ICP1/out.txt | head 5
+head: cannot open `5' for reading: No such file or directory
+
+
+cat: Unable to write to output stream.
+[cloudera@quickstart ~]$
+[cloudera@quickstart ~]$
+[cloudera@quickstart ~]$ hdfs dfs -cat /ICP1/out.txt | head
+The Project Gutenberg EBook of The Complete Works of William Shakespeare, by
+William Shakespeare
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
+
+** This is a COPYRIGHTED Project Gutenberg eBook, Details Below **
+**     Please follow the copyright guidelines in this file.     **
+cat: Unable to write to output stream.
+[cloudera@quickstart ~]$ hdfs dfs -tail  /ICP1/out.txt
+ords in English speaking countries
+
+10,196 places (places.txt)
+a large selection of place names in the United States
+
+354,984 single words (single.txt)
+Over 354,000 single words, excluding proper names, acronyms, or
+compound words and phrases.  This list does not exclude archaic words
+or significant variant spellings.
+
+USA Constitution (usaconst.txt)
+The Constitution of the United States, including the Bill of Rights
+and all amendments current to 1993.
+
+NOTE: Accents have been stripped from words, e.g., 'etude' does not
+mark the accent on the initial 'e'.
+
+
+
+Quick Start
+1) Insure you have at least 10Mb of free disk space to hold the contents
+   of this zip file.
+2) Create a directory to hold these files listed above.
+3) Extract the contents of this zip file into the destination directory
+   using any compatible zip file extraction utility.
+4) Delete the original zip file from your disk to save space.  (optional)
+
+
+End of this Project Gutenberg etext of Moby Word II by Grady Ward.
+End of this Project Gutenberg etext of Moby Word II by Grady Ward.
+[cloudera@quickstart ~]$ hdfs dfs -cat /ICP1/* | hdfs dfs -put -
+/ICP1/final.txt
+[cloudera@quickstart ~]$ hdfs dfs -cat /ICP1/final.txt | head
+The Project Gutenberg EBook of The Complete Works of William Shakespeare, by
+William Shakespeare
+
+This eBook is for the use of anyone anywhere at no cost and with
+almost no restrictions whatsoever.  You may copy it, give it away or
+re-use it under the terms of the Project Gutenberg License included
+with this eBook or online at www.gutenberg.org
+
+** This is a COPYRIGHTED Project Gutenberg eBook, Details Below **
+**     Please follow the copyright guidelines in this file.     **
+cat: Unable to write to output stream.
